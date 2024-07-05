@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,16 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBkVjGM-L4gIt_ztx26ItKf1PT6ngEXJuk',
-    appId: '1:385029601214:web:931ae5391b10aa4d73ebef',
-    messagingSenderId: '385029601214',
-    projectId: 'authentication-learn-8c144',
-    authDomain: 'authentication-learn-8c144.firebaseapp.com',
-    storageBucket: 'authentication-learn-8c144.appspot.com',
-    measurementId: 'G-0HSBPN5FH8',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDolaUeud8An1OUUkv3M-KUTizvNseciwQ',
     appId: '1:385029601214:android:6a982bcfb63bb7b573ebef',
@@ -68,14 +64,5 @@ class DefaultFirebaseOptions {
     projectId: 'authentication-learn-8c144',
     storageBucket: 'authentication-learn-8c144.appspot.com',
     iosBundleId: 'com.example.firebaseAuth',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCrYK8ZBcGGPCxmK_6nUa5HaFr8miLyO_w',
-    appId: '1:385029601214:ios:a8fd2fca9538297373ebef',
-    messagingSenderId: '385029601214',
-    projectId: 'authentication-learn-8c144',
-    storageBucket: 'authentication-learn-8c144.appspot.com',
-    iosBundleId: 'com.example.firebaseAuth.RunnerTests',
   );
 }
