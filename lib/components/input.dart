@@ -6,16 +6,19 @@ class InputForm extends StatelessWidget {
     this.controller,
     this.keyboardType,
     required this.hintText,
+    this.validator,
   });
 
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final String hintText;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      validator: validator,
       keyboardType: keyboardType,
       decoration: InputDecoration(
         contentPadding:
@@ -35,9 +38,10 @@ class InputForm extends StatelessWidget {
 }
 
 class InputPassword extends StatefulWidget {
-  const InputPassword({super.key, this.controller});
+  const InputPassword({super.key, this.controller, this.validator});
 
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   State<InputPassword> createState() => _InputPasswordState();
@@ -55,6 +59,7 @@ class _InputPasswordState extends State<InputPassword> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
       obscureText: passwordVisible,
       controller: widget.controller,
       decoration: InputDecoration(

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "385029601214",
+    "project_id": "authentication-learn-8c144",
+    "storage_bucket": "authentication-learn-8c144.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385029601214:android:6a982bcfb63bb7b573ebef",
+        "android_client_info": {
+          "package_name": "com.example.firebase_auth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDolaUeud8An1OUUkv3M-KUTizvNseciwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

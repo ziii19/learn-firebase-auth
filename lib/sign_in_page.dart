@@ -1,5 +1,5 @@
-import 'package:firebase_auth/reset_pass_page.dart';
-import 'package:firebase_auth/sign_up_page.dart';
+import 'reset_pass_page.dart';
+import 'sign_up_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
