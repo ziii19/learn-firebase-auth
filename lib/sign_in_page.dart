@@ -1,18 +1,19 @@
-import 'package:firebase_auth/sign_in_page.dart';
+import 'package:firebase_auth/sign_up_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'assets.dart';
 import 'components/components.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignInPageState extends State<SignInPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController mailController = TextEditingController();
   TextEditingController passController = TextEditingController();
@@ -24,9 +25,9 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Column(
           children: [
             const SizedBox(height: 50),
-            Image.asset(MainAssets.signUp),
+            Image.asset(MainAssets.signIn),
             const SizedBox(height: 16),
-            const TextTitle(title: 'Sign Up'),
+            const TextTitle(title: 'Sign In'),
             const SizedBox(height: 16),
             const TextDesc(
                 desc:
@@ -53,11 +54,6 @@ class _SignUpPageState extends State<SignUpPage> {
             const OrWidget(),
             const SizedBox(height: 20),
             InputForm(
-              controller: nameController,
-              hintText: 'Name',
-            ),
-            const SizedBox(height: 16),
-            InputForm(
               controller: mailController,
               hintText: 'Email',
               keyboardType: TextInputType.emailAddress,
@@ -66,20 +62,34 @@ class _SignUpPageState extends State<SignUpPage> {
             InputPassword(
               controller: passController,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Forget password?',
+                      style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0XFF7C8BA0)),
+                    )),
+              ],
+            ),
             const SizedBox(height: 30),
             CustomButton(
-              text: 'Create Account',
+              text: 'Log In',
               onTap: () {},
             ),
             const SizedBox(height: 25),
             SingInUp(
-              action: 'Sign In',
-              text: 'Do you have account?',
+              action: 'Sign Up',
+              text: 'Don’t have account?',
               onAction: () {
                 Navigator.push(
                     context,
                     CupertinoPageRoute(
-                        builder: (context) => const SignInPage()));
+                        builder: (context) => const SignUpPage()));
               },
             ),
           ],
