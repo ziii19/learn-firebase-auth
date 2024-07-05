@@ -1,3 +1,4 @@
+import 'package:firebase_auth/reset_pass_page.dart';
 import 'package:firebase_auth/sign_up_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,12 @@ class _SignInPageState extends State<SignInPage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ResetPassPage()));
+                    },
                     child: Text(
                       'Forget password?',
                       style: GoogleFonts.poppins(
