@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'assets.dart';
@@ -11,7 +12,29 @@ class ResetPassPage extends StatefulWidget {
 }
 
 class _ResetPassPageState extends State<ResetPassPage> {
+  String email = '';
   TextEditingController mailController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+
+  resetPass() async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          backgroundColor: Colors.orangeAccent,
+          content: Text(
+            'Successfuly',
+            style: TextStyle(fontSize: 18.0),
+          )));
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.orangeAccent,
+          content: Text(
+            e.message!,
+            style: const TextStyle(fontSize: 18.0),
+          )));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +53,31 @@ class _ResetPassPageState extends State<ResetPassPage> {
                 desc:
                     'It was popularised in the 1960s with the release of Letraset sheetscontaining Lorem Ipsum.'),
             const SizedBox(height: 20),
-            InputForm(
-              controller: mailController,
-              hintText: 'Email',
-              keyboardType: TextInputType.emailAddress,
+            Form(
+              key: _formKey,
+              child: InputForm(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter E-mail';
+                  }
+                  return null;
+                },
+                controller: mailController,
+                hintText: 'Email',
+                keyboardType: TextInputType.emailAddress,
+              ),
             ),
             const SizedBox(height: 30),
             CustomButton(
               text: 'Continue',
-              onTap: () {},
+              onTap: () {
+                if (_formKey.currentState!.validate()) {
+                  setState(() {
+                    email = mailController.text;
+                  });
+                  resetPass();
+                }
+              },
             ),
           ],
         ),
