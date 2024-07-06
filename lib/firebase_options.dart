@@ -63,6 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '385029601214',
     projectId: 'authentication-learn-8c144',
     storageBucket: 'authentication-learn-8c144.appspot.com',
+    androidClientId: '385029601214-9m5pfeciks3g70rhbeh1k9cv4glq5vbo.apps.googleusercontent.com',
+    iosClientId: '385029601214-499qejqgfu6941e8miuf4a8uct15rnfj.apps.googleusercontent.com',
     iosBundleId: 'com.example.firebaseAuth',
   );
 }

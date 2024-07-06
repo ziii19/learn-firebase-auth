@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_learn/home.dart';
+import 'package:firebase_auth_learn/services/auth.dart';
 import 'package:firebase_auth_learn/sign_in_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -79,6 +80,9 @@ class _SignUpPageState extends State<SignUpPage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 BuildItem(
+                  onTap: () {
+                    Auth().signInWithGoogle(context);
+                  },
                   icon: Image.asset(MainAssets.google),
                   app: 'Google',
                 ),
